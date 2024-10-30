@@ -1,0 +1,37 @@
+Hello my name is Ekincan and I'm a computer engineer since when I was graduated from Maltepe University on 2015
+I studied there with a complete scholarship. On the other hand, I graduated from Doğuş university in 2019 with a POSTGRADUATE degree in engineering and technology management.
+That's my educational history. If we pass my professional history that. I have worked as a software developer for approximately 7 years. 
+------------BAYPM-------------
+Firstly, I started my career on BAYPM which is a startup company, and as I heard they still continue their progress.
+I was certificated and specialized in Outsystems low code platform there. Low code doesn't mean that we didn't develop through a programming language. 
+Only we were less related to database and entity jobs because the platform has been doing its database jobs itself. As a programming language, we used core Java and also use javascript and jquery on the frontend side.
+Mostly, We served our business partner's customers there our business partners were located in the US, and their customers were mostly retail companies and we developed for them automation applications on the web.
+In 2017, the Turkey government gave some boost to information technology companies, and the market of Turkey and jobs suddenly peaked. 
+This trend also affected me and I joined a domestic company named is Smartiks as a software specialist.
+------------SMARTIKS------------ 
+While I was in Smartiks, We had developed a forecasting application that took millions of data as input then forecast related points of included data.
+On that project, Philip Morris and KoçSistem had supported us with the data warehouse. 
+And tech stack was, .NET core and MS Azure Machine learning algorithms and of course MSSQL and javascript. 
+After 10 months of working TUBİTAK approved our work and we took a GRANT OF MONEY from them as a Company. 
+Actually, while I have worked on the .NET projects I didn't like them and wanted to pass Java projects.
+However, the company didn't have any Java project and they hadn't thought to work with it. 
+Therefore I changed my job and in January 2018 I started my Toshiba career which was going to take 3 years.  
+----------TOSHIBA---------------
+Toshiba has gained me the most valuable business experience of my career ever because I was positioned there as a software developer and then technical team leader.
+While I was there I experienced multi-cultural and international work experience I have been to Korea, India, and Singapore due to a piece of training before the pandemic.
+First-year of passed with development on the pos application which is already used on market and used by Carrefour, BİM, A101, etc.
+After that my position changed as technical team leader of Self Checkout systems which are already used on Turkey markets such as Migros and Carrefour named as Jet Kasa or Hızlı Kasa.
+When I lead the team of SCO and also before, we used Java and Spring framework as Backend on the Frontend side we used Angular and of course Javascript.
+If I should talk about DB we used MSSQL, PLSQL and PostgreSQL this DB type depends on devices and their OS.
+Our team has had 8 people and also it was an international.  2 of them from India 3 of them from Singapore and the others from here.
+Despite the success of SCO implementations in Turkey, pandemic caused some organizational problems for us, and our team has not done their duty as well as before.
+In addition to that, I have been wanting part to work more technical side of development, which pushed me the change my job.
+------------YK---------------- 
+Actually, I'm a consultant in Yapı Kredi, my employer is Infonal. However, for approximately one year I have not kept in touch with any Infonal personnel except HR staff.
+Here my first purpose was to transform monolith branch applications into microservice implementations.
+Also, I am doing tailored jobs on a branch application named is Harmoni. Which was developed with Java 6 Spring framework and had a specialized Front end side with JS like JSP.
+We are using PLSQL for both monolith and microservice structures.
+The transforming part is actually included Spring to Spring Boot and the old structure of Frontend to React conversion.
+These days I'm working on both of them.  
+-------------------------------
+And I'm open to new opportunities.
