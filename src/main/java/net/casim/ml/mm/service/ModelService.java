@@ -10,6 +10,8 @@ import net.casim.ml.mm.repository.TrainingDataRepository;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -23,10 +25,10 @@ import java.util.concurrent.TimeUnit;
 public class ModelService {
 
     private final ModelRepository modelRepository;
-    private final TrainingDataRepository trainingDataRepository; // Add the repository for TrainingData
+    private final TrainingDataRepository trainingDataRepository;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-    private volatile boolean isTraining = false; // Use volatile to make visibility of changes consistent across threads
-    private final Random random = new Random(); // Reuse Random instance
+    private volatile boolean isTraining = false;
+    private final Random random = new Random();
 
     public ModelService(ModelRepository modelRepository, TrainingDataRepository trainingDataRepository) {
         this.modelRepository = modelRepository;
@@ -73,7 +75,7 @@ public class ModelService {
         }
             modelRepository.delete(model);
 
-        log.debug("Model '{}' deleted successfully", model.getName(), model.getStatus());
+        log.debug("Model deleted successfully");
     }
 
     public void deleteTrainingData(UUID id) {
@@ -81,7 +83,7 @@ public class ModelService {
             TrainingData td = trainingDataRepository.findById(id).get();
 
             trainingDataRepository.delete(td);
-            log.debug("Training Data '{}' deleted successfully", td.getName());
+            log.debug("Training Data deleted successfully");
         }
     }
 
@@ -89,12 +91,11 @@ public class ModelService {
     public void trainModel(UUID modelId) {
         log.info("Received request to train model with ID: {}", modelId);
 
-        // Asynchronous logic for training
-        int trainingDuration = 30 + random.nextInt(151); // Random duration between 30-180 seconds
+        int trainingDuration = 30 + random.nextInt(151);
         log.debug("Simulating training for {} seconds", trainingDuration);
 
         synchronized (this) {
-            isTraining = true; // Set training flag to indicate training has started
+            isTraining = true;
         }
 
         scheduler.schedule(() -> {
@@ -107,23 +108,20 @@ public class ModelService {
                 modelRepository.save(model);
                 trainingDataRepository.save(trainingData);
 
-                log.info("Started training model '{}' with training data '{}' duration '{}'", model.getName(), trainingData.getName(), trainingDuration * 1000L);
+                log.info("Started training model '{}' with training data '{}' duration '{}' seconds", model.getName(), trainingData.getName(), trainingDuration );
 
-                // Simulate training logic by waiting for the specified time
                 Thread.sleep(trainingDuration * 1000L);
 
-                // Simulate accuracy between 70% and 99%
-                double accuracy = 70 + random.nextDouble() * 29;
-                log.debug("Training completed with accuracy: {}%", accuracy);
+                BigDecimal accuracy = BigDecimal.valueOf(70 + random.nextDouble() * 29)
+                        .setScale(2, RoundingMode.HALF_UP);
 
-                // Update the model status and results
                 model.setStatus("Trained");
                 model.setTrainingDuration(trainingDuration);
-                model.setAccuracyPercentage(accuracy);
+                model.setAccuracyPercentage(accuracy.doubleValue());
                 modelRepository.save(model);
                 trainingDataRepository.save(trainingData);
 
-                log.info("Model '{}' training completed with training data '{}'", model.getName(), trainingData.getName());
+                log.info("Model '{}' training completed with training data '{}' , accuracy: {}%", model.getName(), trainingData.getName(),accuracy);
             } catch (InterruptedException e) {
                 log.error("Training interrupted", e);
                 Thread.currentThread().interrupt(); // Preserve interrupt status
@@ -131,7 +129,7 @@ public class ModelService {
                 log.error("Unexpected error occurred during model training", e);
             } finally {
                 synchronized (this) {
-                    isTraining = false; // Reset training status regardless of outcome
+                    isTraining = false;
                 }
             }
         }, 0, TimeUnit.SECONDS);
