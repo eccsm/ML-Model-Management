@@ -29,7 +29,7 @@ This project is an ML Model Management service built with Java and Spring Boot. 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/ml-model-management.git
+   git clone https://github.com/eccsm/ml-model-management.git
    cd ml-model-management
 
 2. **Configure Database:** Update properties with your database configuration.
